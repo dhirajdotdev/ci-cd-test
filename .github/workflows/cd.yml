@@ -21,7 +21,7 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
@@ -37,7 +37,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            sudo docker stop ci-test || true
-            sudo docker rm -f ci-test || true
-            sudo docker pull ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
-            sudo docker run -d --name ci-test -p 80:8000 ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
+            cd /home/ubuntu/ci-cd-test
+            git pull origin main
+            sudo docker compose pull
+            sudo docker compose up -d
+            sudo docker image prune -f

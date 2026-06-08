@@ -1,0 +1,16 @@
+services:
+  nodejs-server:
+    image: dhirajdotdev/ci-test:latest
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+  caddy:
+   image: caddy:latest
+   volumes:
+    - ./Caddyfile:/etc/caddy/Caddyfile:ro
+   networks:
+    - ci-test-internal
+networks:
+  ci-test-internal:
+    driver: bridge
