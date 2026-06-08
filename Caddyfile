@@ -1,13 +1,10 @@
 ci.dhiraj.dev {
+    tls hey@dhiraj.dev
+    
     reverse_proxy nodejs-server:8000 {
         header_up Host {host}
         header_up X-Real-IP {remote}
         header_up X-Forwarded-For {remote}
         header_up X-Forwarded-Proto {scheme}
-    }
-
-    tls {
-        # Automatic TLS for ci.dhiraj.dev
-        # Optionally specify an ACME contact email, e.g. email admin@dhiraj.dev
     }
 }
