@@ -11,9 +11,9 @@ jobs:
 
         steps:
             - name: Checkout Code
-              uses: action/checkout@v4
+              uses: actions/checkout@v4
 
-              -name: Deploy on Server
+            - name: Deploy on Server
               uses: appleboy/ssh-action@v1.0.3
               with:
                    host: 210.79.128.167
