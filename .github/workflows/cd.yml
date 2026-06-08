@@ -37,7 +37,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            docker stop ci-test || true
-            docker rm -f ci-test || true
-            docker pull ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
-            docker run -d --name ci-test -p 8000:8000 ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
+            sudo docker stop ci-test || true
+            sudo docker rm -f ci-test || true
+            sudo docker pull ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
+            sudo docker run -d --name ci-test -p 8000:8000 ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
