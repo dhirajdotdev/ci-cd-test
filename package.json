@@ -16,6 +16,7 @@
       "onFail": "download"
     }
   },
+  "packageManager": "pnpm@11.1.2",
   "type": "module",
   "dependencies": {
     "express": "^5.2.1"
