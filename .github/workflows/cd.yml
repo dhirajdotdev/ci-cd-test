@@ -40,4 +40,4 @@ jobs:
             sudo docker stop ci-test || true
             sudo docker rm -f ci-test || true
             sudo docker pull ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
-            sudo docker run -d --name ci-test -p 8000:8000 ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
+            sudo docker run -d --name ci-test -p 80:8000 ${{ vars.DOCKERHUB_USERNAME }}/ci-test:latest
