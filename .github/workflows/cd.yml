@@ -20,4 +20,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            bash -lc 'source ~/.bashrc >/dev/null 2>&1 || true && source ~/.profile >/dev/null 2>&1 || true && cd /home/ubuntu/ci-cd-test && git pull && pnpm install && pm2 restart 0'
+            set -e
+            source ~/.bashrc
+            cd /home/ubuntu/ci-cd-test
+            git pull
+            pnpm install
+            pm2 restart 0
