@@ -6,7 +6,7 @@ const PORT = process.env.PORT ?? 8000;
 
 app.get("/", (req, res) => {
   return res.json({
-    message: "Server is up",
+    message: "Server is up version 1.0.0",
     system: {
       platform: os.platform(),
       arch: os.arch(),
