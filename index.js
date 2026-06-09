@@ -6,7 +6,7 @@ const PORT = process.env.PORT ?? 8000;
 
 app.get("/", (req, res) => {
   return res.json({
-    message: "Server is up with ssl version 2.0.1",
+    message: "Server is up with ssl version 3.0.0",
     system: {
       platform: os.platform(),
       arch: os.arch(),
