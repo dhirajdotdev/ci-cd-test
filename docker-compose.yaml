@@ -5,14 +5,22 @@ services:
       replicas: 5
       restart_policy:
         condition: on-failure
+    networks:
+      - ci-test-internal
   caddy:
-   image: caddy:latest
-   ports:
-    - "80:80"
-   volumes:
-    - ./Caddyfile:/etc/caddy/Caddyfile:ro
-   networks:
-    - ci-test-internal
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - ci-test-internal
 networks:
   ci-test-internal:
     driver: bridge
+volumes:
+  caddy_data:
+  caddy_config:
